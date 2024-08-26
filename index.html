@@ -209,13 +209,38 @@
             const now = new Date().getTime();
             const distance = now - startDate;
 
-            // Cálculos de tempo
-            const years = Math.floor(distance / (1000 * 60 * 60 * 24 * 365));
-            const months = Math.floor((distance % (1000 * 60 * 60 * 24 * 365)) / (1000 * 60 * 60 * 24 * 30));
-            const days = Math.floor((distance % (1000 * 60 * 60 * 24 * 30)) / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            const start = new Date(startDate);
+            const nowDate = new Date(now);
+
+            let years = nowDate.getFullYear() - start.getFullYear();
+            let months = nowDate.getMonth() - start.getMonth();
+            let days = nowDate.getDate() - start.getDate();
+            let hours = nowDate.getHours() - start.getHours();
+            let minutes = nowDate.getMinutes() - start.getMinutes();
+            let seconds = nowDate.getSeconds() - start.getSeconds();
+
+            // Ajustar valores negativos
+            if (seconds < 0) {
+                seconds += 60;
+                minutes--;
+            }
+            if (minutes < 0) {
+                minutes += 60;
+                hours--;
+            }
+            if (hours < 0) {
+                hours += 24;
+                days--;
+            }
+            if (days < 0) {
+                const previousMonth = new Date(nowDate.getFullYear(), nowDate.getMonth(), 0).getDate();
+                days += previousMonth;
+                months--;
+            }
+            if (months < 0) {
+                months += 12;
+                years--;
+            }
 
             // Exibição do resultado
             document.getElementById("timer").innerHTML = 
