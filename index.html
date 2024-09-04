@@ -319,13 +319,13 @@
     // Cria os corações a cada intervalo de tempo
     setInterval(createHearts, 300);
 
-    // Função para mostrar mensagem especial todo dia 4 de cada mês às 18:00
+    // Função para mostrar mensagem especial todo dia 4 de cada mês às 20:50
 function showSpecialMessage() {
     const now = new Date();
-    if (now.getDate() === 4 && now.getHours() === 13 && now.getMinutes() === 47 && now.getSeconds() === 0) {
+    if (now.getDate() === 4 && now.getHours() === 14 && now.getMinutes() === 04 && now.getSeconds() === 0) {
         const specialMessage = document.createElement('div');
         specialMessage.innerHTML = `
-            <h1>Parabéns para a gnt morzinnn, estamos 6 mesesss juntinhosss! EU TE AMO MUITOOOOO 😁🥳😘🤗💖</h1>
+            <h1>Parabéns para a gnt morzinnn, estamos mais um mês juntinhosss! 😁🥳😘🤗💖</h1>
             <button class="play-button" onclick="playSpecialAudio()">Reproduzir Áudio Especial</button>
             <audio id="special-audio">
                 <source src="Felizess.mp3" type="audio/mpeg">
